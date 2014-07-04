@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>seajs helloworld</title>
+</head>
+<body>
+  helloworld--> <span id="helloworld"></span><br/>
+  a--> <span id="a"></span><br/>
+  b--> <span id="b"></span><br/>
+
+	<script src="../../sea-modules/seajs/seajs/2.2.1/sea.js" id="seajsnode"></script>
+  <script src="../../seajs-config.js"></script>
+  <script>
+    var isDev = location.href.indexOf("?dev") > 0;
+    // Set configuration
+    seajs.config({
+      base: "../../sea-modules/",
+      // alias: {
+  		  // "$": "jquery/jquery/2.1.0/jquery",
+  		  // "jquery": "jquery/jquery/2.1.0/jquery"
+      // },
+      map: [
+        //['\/sea-modules\/dist', '/dist']
+      ]
+    });
+    // For development
+    if (isDev) {
+      seajs.use("../../src/helloworld/main");
+    }
+    else {// For production
+      seajs.use("../../sea-modules/learn-js/helloworld/main");
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+{
+  "name": "learn-js",
+  "version": "0.0.1",
+  "description": "learn js",
+  "devDependencies": {
+    "grunt": "0.4.5",
+    "grunt-cmd-concat": "0.2.7",
+    "grunt-cmd-transport": "0.4.1",
+    "grunt-contrib-clean": "0.5.0",
+    "grunt-contrib-copy": "0.5.0",
+    "grunt-contrib-cssmin": "0.10.0",
+    "grunt-contrib-jshint": "0.10.0",
+    "grunt-contrib-less": "0.11.3",
+    "grunt-contrib-uglify": "0.5.0",
+    "grunt-contrib-watch": "0.6.1",
+    "grunt-contrib-yuidoc": "0.5.2",
+    "matchdep": "0.3.0"
+  },
+  "engines": {
+    "node": ">=0.8.0"
+  },
+  "spm": {
+    "alias": {
+      "sea": "seajs/seajs/2.2.1/sea",
+      "$": "jquery/jquery/2.1.0/jquery",
+      "jquery": "jquery/jquery/2.1.0/jquery",
+      "bootstrap-theme.css": "gallery/bootstrap/3.0.0/bootstrap-theme.css",
+      "bootstrap.css": "gallery/bootstrap/3.0.0/bootstrap.css",
+      "bootstrap": "gallery/bootstrap/3.0.0/bootstrap",
+      "fonts/glyphicons-halflings-regular.eot": "gallery/bootstrap/3.0.0/fonts/glyphicons-halflings-regular.eot",
+      "fonts/glyphicons-halflings-regular.svg": "gallery/bootstrap/3.0.0/fonts/glyphicons-halflings-regular.svg",
+      "fonts/glyphicons-halflings-regular.ttf": "gallery/bootstrap/3.0.0/fonts/glyphicons-halflings-regular.ttf",
+      "fonts/glyphicons-halflings-regular.woff": "gallery/bootstrap/3.0.0/fonts/glyphicons-halflings-regular.woff",
+      "underscore": "gallery/underscore/1.6.0/underscore",
+      "moment": "gallery/moment/2.6.0/moment"
+      
+    }
+  },
+  "main": "index.js",
+  "scripts": {
+    "test": "grunt test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/emila-github/learn-js.git"
+  },
+  "keywords": [
+    "learn",
+    "js"
+  ],
+  "author": "emila-github",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/emila-github/learn-js/issues"
+  },
+  "homepage": "https://github.com/emila-github/learn-js"
+}
