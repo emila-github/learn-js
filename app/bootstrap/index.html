@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>bootstrap learn</title>
+</head>
+<body>
+	
+	<script src="../../sea-modules/seajs/seajs/2.2.1/sea.js" id="seajsnode"></script>
+  <script src="../../seajs-config.js"></script>
+    <script>
+      var isDev = location.href.indexOf("?dev") > 0;
+      // For development
+      if (isDev) {
+        seajs.use("../../src/bootstrap/main");
+      }
+      else {// For production
+        console.log('todo production');
+        seajs.use("../../sea-modules/learn-js/bootstrap/main");
+      }
+    </script>
+</body>
+</html>
