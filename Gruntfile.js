@@ -5,6 +5,16 @@ module.exports = function(grunt) {
   grunt.initConfig({
 
     pkg: grunt.file.readJSON('package.json'),
+    watch: {
+      src: {
+        files: ['src/**/*.js'],
+        tasks: ['default'],
+      },
+      // test: {
+      //   files: 'src/**/*.js',
+      //   tasks: ['test'],
+      // },
+    },
     jshint: {
       options: {
         jshintrc: true
@@ -12,6 +22,23 @@ module.exports = function(grunt) {
       files: ['src/**/*.js']
     },
     qunit: {
+      all: ['tests/**/*.html']
+    },
+    connect: {
+      server: {
+        options: {
+          port: 8001,
+          base: '.',
+          keepalive: true
+        }
+      }
+      // site2: {
+      //   options: {
+      //     port: 9021,
+      //     base: 'www-roots/site2',
+      //     keepalive: true
+      //   }
+      // }
     },
     copy: {
       // sea: {
@@ -93,7 +120,7 @@ module.exports = function(grunt) {
 
   grunt.registerTask('test', ['jshint'/*, 'qunit'*/]);
 
-  grunt.registerTask('build', ['test', 'seajs', 'minify'/*, 'yuidoc'*/]);
+  grunt.registerTask('build', ['test', 'seajs', 'minify'/*, 'yuidoc'*/, 'connect']);
 
 
   grunt.registerTask('default', ['build']);
