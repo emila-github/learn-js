@@ -56,7 +56,8 @@ module.exports = function(grunt) {
     },
     uglify: {
       options: {
-        banner: '/*! <%= pkg.name %>-<%= pkg.version %> <%= grunt.template.today("yyyy-mm-dd HH:MM:ss") %> */\n',
+        // banner: '/*! <%= pkg.name %>-<%= pkg.version %> <%= grunt.template.today("yyyy-mm-dd HH:MM:ss") %> */\n',
+        banner: '/*! <%= pkg.name %>-<%= pkg.version %> */\n',
         beautify: {
           'ascii_only': true
         },
