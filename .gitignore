@@ -4,5 +4,10 @@
 #忽略 node 模块目录
 node_modules/
 
+#忽略 bower_components 包管理 模块目录
+bower_components/
+
 #忽略 dist 目录
 dist/
+
+.idea/
