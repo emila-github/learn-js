@@ -30,4 +30,5 @@ Vcs菜单，`Enable version control integration`，激活源码管理集成。�
 ## 参考资料 ##
 
 - [Git教程](http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000)
+- [git for windows](http://msysgit.github.io/)
 
