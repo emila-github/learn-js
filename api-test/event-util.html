@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>EventUtil</title>
+</head>
+<body>
+
+       <span id="addEventBtn">addEventBtn</span>
+
+
+       <script type="text/javascript">
+             var EventUtil = {
+                addHandler: function(element, type, handler) {
+                     if(element.addEventListener) {
+                         element.addEventListener(type, handler, false);
+                     } else if(element.attachEvent) {
+                         element.attachEvent('on' + type, handler);
+                     } else {
+                         element['on' + type] = handler;
+                     }
+                },
+                removeHandler: function(element, type, handler) {
+                    if(element.removeEventListener) {
+                        element.removeEventListener(type, handler, false);
+                    } else if(element.detachEvent) {
+                        element.detachEvent('on' + type, handler);
+                    } else {
+                        element['on' + type] = null;
+                    }
+                },
+                getEvent: function(event) {
+                    return event ? event : window.event;
+                },
+                getTarget: function(event) {
+                    return event.target || event.srcElement;
+                },
+                preventDefault: function(event) {
+                    if(event.preventDefault) {
+                        event.preventDefault();
+                    } else {
+                        event.returnValue =  false;
+                    }
+                },
+                stopPropagation: function(event) {
+                   if(event.stopPropagation) {
+                       event.stopPropagation();
+                   } else {
+                       event.cancelBubble = true;
+                   }
+                }
+             };
+
+
+             //ex:
+             var addEventBtn = document.getElementById('addEventBtn');
+             var hanler_a = function() {
+                 console.log('addEventBtn Clicked!');
+             };
+
+             //绑定click事件
+             EventUtil.addHandler(addEventBtn, 'click', hanler_a);
+
+
+            //取消click事件
+             EventUtil.removeHandler(addEventBtn, 'click', hanler_a);
+       </script>
+</body>
+</html>
