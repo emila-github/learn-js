@@ -6,3 +6,5 @@ node_modules/
 
 #忽略 dist 目录
 dist/
+
+.idea/
