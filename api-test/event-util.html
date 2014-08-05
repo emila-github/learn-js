@@ -5,8 +5,9 @@
     <title>EventUtil</title>
 </head>
 <body>
-
-       <span id="addEventBtn">addEventBtn</span>
+       <span id="eventBtn">eventBtn</span>
+       <span id="addEventBtn">点击添加eventBtn事件</span>
+       <span id="removeEventBtn">点击移除eventBtn事件</span>
 
 
        <script type="text/javascript">
@@ -53,17 +54,27 @@
 
 
              //ex:
-             var addEventBtn = document.getElementById('addEventBtn');
-             var hanler_a = function() {
+             var eventBtn = document.getElementById('eventBtn'),
+                 addEventBtn = document.getElementById('addEventBtn'),
+                 removeEventBtn = document.getElementById('removeEventBtn');
+             var hanler_add = function() {
                  console.log('addEventBtn Clicked!');
              };
 
-             //绑定click事件
-             EventUtil.addHandler(addEventBtn, 'click', hanler_a);
+             //绑定eventBtn click事件
+             var bindAdd = function() {
+                 EventUtil.addHandler(eventBtn, 'click', hanler_add);
+             };
+             //取消eventBtn click事件
+             var bindRemove = function() {
+                 EventUtil.removeHandler(eventBtn, 'click', hanler_add);
+             };
+
+             // 绑定 addEventBtn   、 removeEventBtn 事件
+             EventUtil.addHandler(addEventBtn, 'click', bindAdd);
+             EventUtil.addHandler(removeEventBtn, 'click', bindRemove);
 
 
-            //取消click事件
-             EventUtil.removeHandler(addEventBtn, 'click', hanler_a);
        </script>
 </body>
 </html>
