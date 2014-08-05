@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>EventUtil</title>
+</head>
+<body>
+       <div style="height: 8000px;"></div>
+       <span id="eventBtn1">eventBtn1</span>
+
+
+       <script type="text/javascript">
+             var EventUtil = {
+                addHandler: function(element, type, handler) {
+                     if(element.addEventListener) {
+                         element.addEventListener(type, handler, false);
+                     } else if(element.attachEvent) {
+                         element.attachEvent('on' + type, handler);
+                     } else {
+                         element['on' + type] = handler;
+                     }
+                },
+                removeHandler: function(element, type, handler) {
+                    if(element.removeEventListener) {
+                        element.removeEventListener(type, handler, false);
+                    } else if(element.detachEvent) {
+                        element.detachEvent('on' + type, handler);
+                    } else {
+                        element['on' + type] = null;
+                    }
+                },
+                getEvent: function(event) {
+                    return event ? event : window.event;
+                },
+                getTarget: function(event) {
+                    return event.target || event.srcElement;
+                },
+                preventDefault: function(event) {
+                    if(event.preventDefault) {
+                        event.preventDefault();
+                    } else {
+                        event.returnValue =  false;
+                    }
+                },
+                stopPropagation: function(event) {
+                   if(event.stopPropagation) {
+                       event.stopPropagation();
+                   } else {
+                       event.cancelBubble = true;
+                   }
+                }
+             };
+
+
+             //ex:
+             var eventBtn1 = document.getElementById('eventBtn1');
+
+
+             // 绑定 eventBtn1 事件
+             EventUtil.addHandler(eventBtn1, 'click', function(event) {
+                 console.log(event);
+                 //相对与浏览器可见区域坐标
+                 console.log('event.client = ' + event.clientX + ', ' + event.clientY);
+                 //相对与页面的坐标
+                 console.log('event.page = ' + event.pageX + ', ' + event.pageY);
+                 //相对与屏幕的坐标
+                 console.log('event.screen = ' + event.screenX + ', ' + event.screenY);
+             });
+
+
+
+       </script>
+</body>
+</html>
