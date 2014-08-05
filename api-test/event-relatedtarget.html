@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>EventUtil</title>
+</head>
+<body>
+       <span id="eventBtn1" style="width: 500px; height: 500px; background: #0000ed; display: block;">eventBtn1</span>
+
+
+       <script type="text/javascript">
+             var EventUtil = {
+                addHandler: function(element, type, handler) {
+                     if(element.addEventListener) {
+                         element.addEventListener(type, handler, false);
+                     } else if(element.attachEvent) {
+                         element.attachEvent('on' + type, handler);
+                     } else {
+                         element['on' + type] = handler;
+                     }
+                },
+                removeHandler: function(element, type, handler) {
+                    if(element.removeEventListener) {
+                        element.removeEventListener(type, handler, false);
+                    } else if(element.detachEvent) {
+                        element.detachEvent('on' + type, handler);
+                    } else {
+                        element['on' + type] = null;
+                    }
+                },
+                getEvent: function(event) {
+                    return event ? event : window.event;
+                },
+                getTarget: function(event) {
+                    return event.target || event.srcElement;
+                },
+                preventDefault: function(event) {
+                    if(event.preventDefault) {
+                        event.preventDefault();
+                    } else {
+                        event.returnValue =  false;
+                    }
+                },
+                stopPropagation: function(event) {
+                   if(event.stopPropagation) {
+                       event.stopPropagation();
+                   } else {
+                       event.cancelBubble = true;
+                   }
+                },
+                // 该属性只对 mouserover mouseout 事件才包含值，其他事件这个属性返回null
+                getRelatedTarget: function(event) {
+                    if(event.relatedTarget) {  //IE8及之前版本不支持该属性
+                        return event.relatedTarget;
+                    } else if(event.toElement) {  //mouseover事件触发时
+                        return event.toElement;
+                    } else if(event.fromElement) { //mouseout事件触发时
+                        return event.fromElement;
+                    } else {
+                        return null;
+                    }
+                }
+             };
+
+
+             //ex:
+             var eventBtn1 = document.getElementById('eventBtn1');
+
+
+             // 绑定 eventBtn1 事件   mouserover mouseout 事件
+             EventUtil.addHandler(eventBtn1, 'mouseout', function(event) {
+                event = EventUtil.getEvent(event);
+                var target = EventUtil.getTarget(event);
+                var relatedTarget = EventUtil.getRelatedTarget(event);
+                console.log('Mouse out of ' + target.tagName + ' to ' + relatedTarget.tagName);
+             });
+
+             EventUtil.addHandler(eventBtn1, 'mouseover', function(event) {
+                 event = EventUtil.getEvent(event);
+                 var target = EventUtil.getTarget(event);
+                 var relatedTarget = EventUtil.getRelatedTarget(event);
+                 console.log('Mouse in of ' + relatedTarget.tagName + ' from ' + target.tagName);
+             });
+
+       </script>
+</body>
+</html>
