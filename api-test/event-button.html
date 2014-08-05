@@ -59,6 +59,28 @@
                     } else {
                         return null;
                     }
+                },
+                //返回mousedown mouseup后的buttom属性
+                //DOM的 button 属性有3个值： 0 表示主鼠标按钮（鼠标左键）   1 表示中间鼠标按钮（滚轮按钮）
+                // 2 表示次鼠标按钮（鼠标右键）
+                getButton: function(event) {
+                    if(document.implementation.hasFeature('MouseEvents', '2.0')) {
+                        return event.button;
+                    } else { //IE8及以前版本
+                        switch(event.button) {
+                            case 0:
+                            case 1:
+                            case 3:
+                            case 5:
+                            case 7:
+                                return 0;
+                            case 2:
+                            case 6:
+                                return 2;
+                            case 4:
+                                return 1;
+                        }
+                    }
                 }
              };
 
@@ -67,20 +89,25 @@
              var eventBtn1 = document.getElementById('eventBtn1');
 
 
-             // 绑定 eventBtn1 事件   mouserover mouseout 事件                 event-relatedtarget.html
-             EventUtil.addHandler(eventBtn1, 'mouseout', function(event) {
+             // 绑定 eventBtn1 事件   mousedown mouseup 事件
+             EventUtil.addHandler(eventBtn1, 'mousedown', function(event) {
                 event = EventUtil.getEvent(event);
-                var target = EventUtil.getTarget(event);
-                var relatedTarget = EventUtil.getRelatedTarget(event);
-                console.log('Mouse out of ' + target.tagName + ' to ' + relatedTarget.tagName);
+                var mouseBtn = EventUtil.getButton(event),
+                    mouseBtnLabel = function(mouseBtn) {
+                        switch(mouseBtn) {
+                            case 0:
+                                return '左';
+                            case 1:
+                                return '中';
+                            case 2:
+                                return '右';
+                        }
+                    };
+                console.log('get Button ' + mouseBtnLabel(mouseBtn) + '键: '+ mouseBtn);
+
              });
 
-             EventUtil.addHandler(eventBtn1, 'mouseover', function(event) {
-                 event = EventUtil.getEvent(event);
-                 var target = EventUtil.getTarget(event);
-                 var relatedTarget = EventUtil.getRelatedTarget(event);
-                 console.log('Mouse in of ' + relatedTarget.tagName + ' from ' + target.tagName);
-             });
+
 
        </script>
 </body>
