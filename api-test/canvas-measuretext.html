@@ -2,7 +2,7 @@
 <html>
 <head lang="en">
     <meta charset="UTF-8">
-    <title>绘制文本</title>
+    <title>绘制文本-width</title>
 </head>
 <body>
        <canvas id="drawing" width="500" height="500" style="border: #0000ed 1px solid;">A drawing of something...</canvas>
@@ -17,12 +17,17 @@
 
               var fontSize = 100;
               context.font = fontSize + 'px Arial';
-
-              w
-
               var _txt = 'hello world';
-              console.log(context.measureText(_txt).width);
-              context.fillText(_txt, 250, 100);
+
+              //文本宽度是否超过 140px 如果超过减小字体大小
+              while(context.measureText(_txt).width > 140) {
+                  fontSize--;
+                  context.font = fontSize + 'px Arial';
+              }
+
+
+              context.fillText(_txt, 100, 100);
+              context.fillText('Font size is ' + fontSize + 'px', 100, 150);
 
 
            }
