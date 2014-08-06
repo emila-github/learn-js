@@ -41,6 +41,8 @@
                 context.fillStyle = '#ff0000';
                 context.fillText('12', 0, -75);
 
+                context.save(); //保存当前设置到堆结构中
+
                 //旋转表针 - 分针转30度  时针也转30度
                 context.rotate(2 * Math.PI * (30 / 360));
 
@@ -48,7 +50,7 @@
                 context.moveTo(0, 0);
                 context.lineTo(0, 80); //从上一点开始绘制一条直线到(x, y)为止
 
-
+                context.restore();  //回退到上一个.save的状态
                 //旋转表针  -  时针转30度
                 context.rotate(2 * Math.PI * (30 / 360));
 
