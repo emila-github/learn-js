@@ -2,6 +2,9 @@ DataTables - Jquery DataTables 基本设置
 	
 	
 	$('#example').dataTable({  
+		   "sScrollX": "100%", //表格的宽度   
+		   "sScrollXInner": "110%", //表格的内容宽度
+		   "bScrollCollapse": true, //当显示的数据不足以支撑表格的默认的高度时，依然显示纵向的滚动条。(默认是false)  
 	       "bPaginate": true,  //是否显示分页  
 	       "bLengthChange": true,  //每行显示的记录数  
 	       "bFilter": true, //搜索栏  
@@ -38,5 +41,6 @@ DataTables - Jquery DataTables 基本设置
 	           }  
 	       }, //多语言配置  
 	       "bJQueryUI": false, //可以添加 jqury的ui theme  需要添加css  
+		   "aLengthMenu": [[10, 25, 50, -1, 0], ["每页10条", "每页25条", "每页50条", "显示所有数据", "不显示数据"]] //设置每页显示记录的下拉菜单
 	   });  
 	}); 
