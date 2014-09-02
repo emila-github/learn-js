@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>动态加载js</title>
+    <script src="#1"></script>
+    <script src="#2"></script>
+    <script src="#3"></script>
+    <script src="#4"></script>
+</head>
+<body>
+       <script type="text/javascript">
+           (function(){
+               //在head的子节点前插入一个新的子节点添加js
+               var doc = document,
+                   s = doc.createElement('script'),
+                   h = doc.getElementsByTagName('head')[0] || doc.head || doc.documentElement;
+               s.type = 'text/javascript';
+               s.charset = 'utf-8';
+               s.src =  'http://assets.changyan.sohu.com/upload/changyan.js';
+               h.insertBefore(s,h.firstChild);
+           })();
+       </script>
+</body>
+</html>
