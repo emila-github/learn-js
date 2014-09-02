@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>navigator.userAgent</title>
+</head>
+<body>
+       <script type="text/javascript">
+           (function(){
+
+               // 浏览器类型
+               var _browsers = [
+                   [/(17173)/ , '17173'],
+                   [/(PaleMoon)/ , 'pm'],
+                   [/(Fennec)/ , 'fn'],
+                   [/(Flock)/ , 'fk'],
+                   [/(RockMelt)/ , 'rm'],
+                   [/(Navigator)/ , 'ng'],
+                   [/(MyIBrow)/ , 'mb'],
+                   [/(CrMo|CriOS)/ , 'cm'],
+                   [/(QQBrowser|TencentTraveler)/i , 'qq'],
+                   [/(Maxthon)/ , 'ma'],
+                   [/(360SE|360EE|360browser)/i , '36'],
+                   [/(Theworld)/ , 'th'],
+                   [/( SE )/ , 'se'],
+                   [/(LBBROWSER)/ , 'lb'],
+                   [/(Lynx)/ , 'ln'],
+                   [/(CoolNovo)/ , 'cl'],
+                   [/(TaoBrowser)/ , 'tb'],
+                   [/(Arora)/ , 'aa'],
+                   [/(Epiphany)/ , 'ep'],
+                   [/(Links)/ , 'ls'],
+                   [/(Camino)/ , 'cmn'],
+                   [/(Konqueror)/ , 'kq'],
+                   [/(Avant Browser)/ , 'ab'],
+                   [/(ELinks)/ , 'el'],
+                   [/(Minimo)/ , 'mnm'],
+                   [/baiduie8|baidubrowser|FlyFlow|BIDUBrowser/i , 'bd'],
+                   [/(UCBrowser|UC Browser|UCWEB|UC AppleWebKit)/ , 'uc'],
+                   [/(OneBrowser)/ , 'ob'],
+                   [/(iBrowser\/Mini)/ , 'im'],
+                   [/(Nokia|BrowserNG|NokiaBrowser|Series60|S40OviBrowser)/ , 'nk'],
+                   [/(BB10|PlayBook|Black[bB]erry)/ , 'bb'],
+                   [/(OmniWeb)/ , 'ow'],
+                   [/(Blazer)/ , 'bz'],
+                   [/Qt/ , 'qt'],
+                   [/(NetFront)/ , 'nf'],
+                   [/(Silk)/ , 'sk'],
+                   [/(Teleca)/ , 'tc'],
+                   [/(Froyo)/ , 'fy'],
+                   [/(MSIE 9)/ , 'ie9'],
+                   [/(MSIE 8)/ , 'ie8'],
+                   [/(MSIE 7)/ , 'ie7'],
+                   [/(MSIE 6)/ , 'ie6'],
+                   [/(MSIE 10)/ , 'ie10'],
+                   [/(Opera Mini)/ , 'opm'],
+                   [/(Opera|Oupeng)/ , 'op'],
+                   [/(iPhone|iPad|iPod)/ , 'ms'],
+                   [/(Firefox)/ , 'ff'],
+                   [/(Chrome)/ , 'ch'],
+                   [/(Safari)/ , 'sa'],
+                   [/(MSIE)/ , 'ie'],
+                   [/(Android)/ , 'ad']
+               ];
+
+               //获取浏览器类型
+               var getBrowser = function(BrowserList) {
+                   var _userAgent = navigator.userAgent.toString(),
+                       _browsers = BrowserList || [];
+                   console.log('navigator.userAgent = ', _userAgent);
+                   for(var i in _browsers){
+                       var _match = _userAgent.match(_browsers[i][0]);
+                       if(_match && _browsers[i][1]) {
+                           return _browsers[i][1];
+                       }
+                   }
+                   return 0;
+               };
+
+               console.log('浏览器类型： ', getBrowser(_browsers));
+
+
+
+           })();
+       </script>
+</body>
+</html>
