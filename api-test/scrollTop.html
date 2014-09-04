@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>scrollTop </title>
+</head>
+<body>
+       <script type="text/javascript">
+           (function(){
+               /**
+                在设计页面时可能经常会用到固定层的位置，这就需要获取一些html对象的坐标以更灵活的设置目标层的坐标，
+                这里可能就会用到document.body.scrollTop等属性，
+                但是此属性在xhtml标准网页或者更简单的说是带<!DOCTYPE ..>标签的页面里得到的结果是0，
+                如果不要此标签则一切正常，那么在xhtml页面怎么获得body的坐标呢，
+                当然有办法-使用document.documentElement来取代document.body,可以这样写
+                例：
+                **/
+
+
+               window.onscroll = function() {
+                   var top = document.documentElement.scrollTop || document.body.scrollTop;
+                   console.log('top = ', top);
+               }
+           })();
+       </script>
+
+
+       <div style="height: 5000px;"></div>
+</body>
+</html>

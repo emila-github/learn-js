@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>EventUtil</title>
+</head>
+<body>
+       <script type="text/javascript">
+
+           function try360SE(callback) {
+               var ret = false,
+                       img = new Image();
+
+               img.src = 'res://360se.exe/2/2025';
+               img.onload = function() {
+                   ret = true;
+               }
+
+               setTimeout(function() {
+                   callback(ret);
+                   ret = undefined;
+               }, 100);
+           }
+
+           try360SE(function(t){
+               console.log('t = ', t);
+           });
+
+
+           function isSe360(){
+               var ua = navigator.userAgent.toLowerCase();
+               //全局变量
+               IS_360 = false;
+               if(!ua.match(/msie ([\d.]+)/)) return IS_360;
+               var img = newImage();
+               img.src = 'res://360se.exe/2/2025';
+               img.onload=function(){
+                   if(img.fileSize > 0) IS_360 = true;
+               };
+           }
+           console.log(isSe360());
+           //console.log(external.twGetVersion(external.twGetSecurityID(window)).split('.'));
+
+           function r_() {(r_.img = new Image()).src="/cgi-bin/report_cgi?sid=_pAn5fxvYQ_TTFED&r_type=1000009";}
+           var f_=false,u_=navigator.userAgent.toLowerCase();
+           try{if(external.twGetRunPath().toLowerCase().indexOf("360se")>-1){f_=true}}catch(e){}
+           if (u_.indexOf("360chrome")>-1||u_.indexOf("360se")>-1){f_=true;}
+           f_ ? r_() : !','.split(/,/).length && document.write('<img src="res://360se.exe/2/2025" style="display:none;" onload="r_();"/>');
+           console.log(f_, r_())
+
+       </script>
+</body>
+</html>

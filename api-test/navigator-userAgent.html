@@ -67,7 +67,6 @@
                var getBrowser = function(BrowserList) {
                    var _userAgent = navigator.userAgent.toString(),
                        _browsers = BrowserList || [];
-                   console.log('navigator.userAgent = ', _userAgent);
                    for(var i in _browsers){
                        var _match = _userAgent.match(_browsers[i][0]);
                        if(_match && _browsers[i][1]) {
@@ -78,9 +77,6 @@
                };
 
                console.log('浏览器类型： ', getBrowser(_browsers));
-
-
-
            })();
        </script>
 </body>
