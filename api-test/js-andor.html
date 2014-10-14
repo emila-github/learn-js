@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>and or</title>
+</head>
+<body>
+       <script type="text/javascript">
+           (function(){
+               var a = function() {
+                   console.log('a');
+                   return 1;
+               };
+               var b = function() {
+                   console.log('b');
+                   return 2;
+               };
+
+               var c = function() {
+                   console.log('c');
+                   return 0;
+               };
+
+               if(a() || c() && b()) { //执行a  不执行 c b
+                   console.log('end.')
+               }
+
+
+
+           })();
+       </script>
+</body>
+</html>
