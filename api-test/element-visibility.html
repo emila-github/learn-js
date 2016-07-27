@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>元素可见性</title>
+</head>
+<style type="text/css">
+    .info{ position: fixed; top: 0px; right: 0px; background: #0000ed; color: #fff; width: 50%;}
+    .block1{display: block; height: 50px; display: block; width: 300px; background: #008800;}
+    .br{height: 400px; display: block;}
+    .box{width: 2000px; padding-left: 800px;}
+</style>
+<body>
+element Visibility API
+<br/>
+<div id="info" class="info"></div>
+<div class="box">
+    <span id="a" class="block1">A</span>
+    <div class="br"></div>
+    <span id="b" class="block1">B</span>
+    <div class="br"></div>
+    <span id="c" class="block1">C</span>
+</div>
+
+
+
+
+       <script type="text/javascript">
+       (function() {
+           var a = document.getElementById("a");
+           var b = document.getElementById("b");
+           var c = document.getElementById("c");
+           var info = document.getElementById("info");
+
+           var isVisibilityEle = function(obj, areaPercent) {
+               var _areaPercent = ( (areaPercent && areaPercent >= 0) ? parseFloat(areaPercent) : 60 ) * 0.01;
+               var _objClientRect = obj.getBoundingClientRect();
+               var top = _objClientRect.top; //元素顶端到可见区域顶端的距离
+               var bottom = _objClientRect.bottom;
+               var left = _objClientRect.left;
+               var right = _objClientRect.right;
+               var ch = document.documentElement.clientHeight; //浏览器可见区域高度。
+               var cw = document.documentElement.clientWidth; //浏览器可见区域宽度。
+
+               var w = right - left,
+                   h = bottom - top,
+                   vh = 0, //元素可见区域的高
+                   vw = 0;  //元素可见区域的宽
+
+               if(cw >= right) {
+                   if(right <= 0) {
+                       vw = 0;
+                   }
+                   else if(right > 0 && left <= 0) {
+                       vw = right;
+                   }
+                   else if(right > 0 && left > 0) {
+                       vw = right - left;
+                   }
+               }
+               else if(cw < right) {
+                   if(cw <= left) {
+                       vw = 0;
+                   }
+                   else if(cw > left) {
+                       vw = cw - left;
+                   }
+               }
+
+               if(ch >= bottom) {
+                   if(bottom <= 0) {
+                       vh = 0;
+                   }
+                   else if(bottom > 0 && top <= 0) {
+                       vh = bottom;
+                   }
+                   else if(bottom > 0 && top > 0) {
+                       vh = bottom - top;
+                   }
+               }
+               else if(ch < bottom) {
+                   if(ch <= top) {
+                       vh = 0;
+                   }
+                   else if(ch > top) {
+                       vh = cw - top;
+                   }
+               }
+
+
+
+               console.log('w = ' + w + ' h = ' + h + ' vw = ' + vw + ' vh = ' + vh);
+
+               if((vw * vh) / (w * h) >= _areaPercent) {
+                   return true;
+               } else {
+                   return false;
+               }
+
+
+//               //纵向可见
+//               if(top < ch && bottom < ch && top >=0 && bottom > 0 ) {
+//                   console.log(top, bottom, ch, obj.id + '可见h');
+//               } else {
+//                   console.log(top, bottom, ch, obj.id + '不可见h');
+//               }
+//
+//               //横向可见
+//               if(left < cw && right < cw && left >=0 && right > 0 ) {
+//                   console.log(left, right, cw, obj.id + '可见w');
+//               } else {
+//                   console.log(left, right, cw, obj.id + '不可见w');
+//               }
+//
+//               //可见
+//               if(top < ch && bottom < ch && top >=0 && bottom > 0 && left < cw && right < cw && left >=0 && right > 0 ) {
+//                   console.log(top, bottom, left, right, cw,  ch, obj.id + '可见wh');
+//                   info.innerHTML += obj.id + ': 可见 ';
+//               } else {
+//                   console.log(top, bottom, left, right, cw,  ch, obj.id + '不可见wh');
+//                   info.innerHTML += obj.id + ': 不可见 ';
+//               }
+
+
+           };
+
+           window.onscroll = function() {
+               info.innerHTML = '元素可见性： ';
+               console.clear();
+               info.innerHTML += (' a: ' + (isVisibilityEle(a) ? '可见' : '不可见'));
+               info.innerHTML += (' b: ' + (isVisibilityEle(b) ? '可见' : '不可见'));
+               info.innerHTML += (' c: ' + (isVisibilityEle(c) ? '可见' : '不可见'));
+
+
+           };
+
+
+
+
+
+
+
+       }());
+       </script>
+</body>
+</html>
