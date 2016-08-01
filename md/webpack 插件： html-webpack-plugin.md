@@ -12,7 +12,7 @@
 <p>&nbsp;</p>
 <h1>Basic Usage</h1>
 <p>这个插件可以帮助生成 HTML 文件，在 body 元素中，使用 script 来包含所有你的 webpack bundles，只需要在你的 webpack 配置文件中如下配置：</p>
-<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="//common.cnblogs.com/images/copycode.gif" alt="复制代码"></a></span></div>
+
 <pre><span style="color: #0000ff;">var</span> HtmlWebpackPlugin = require('html-webpack-plugin'<span style="color: #000000;">)
 </span><span style="color: #0000ff;">var</span> webpackConfig =<span style="color: #000000;"> {
   entry: </span>'index.js'<span style="color: #000000;">,
@@ -22,10 +22,9 @@
   },
   plugins: [</span><span style="color: #0000ff;">new</span><span style="color: #000000;"> HtmlWebpackPlugin()]
 }</span></pre>
-<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="//common.cnblogs.com/images/copycode.gif" alt="复制代码"></a></span></div></div>
-<p>&nbsp;</p>
+
 <p>这将会自动在 dist 目录中生成一个名为 index.html 的文件，内容如下：</p>
-<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="//common.cnblogs.com/images/copycode.gif" alt="复制代码"></a></span></div>
+
 <pre><span style="color: #0000ff;">&lt;!</span><span style="color: #ff00ff;">DOCTYPE html</span><span style="color: #0000ff;">&gt;</span>
 <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">html</span><span style="color: #0000ff;">&gt;</span>
   <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">head</span><span style="color: #0000ff;">&gt;</span>
@@ -36,8 +35,7 @@
     <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">script </span><span style="color: #ff0000;">src</span><span style="color: #0000ff;">="index_bundle.js"</span><span style="color: #0000ff;">&gt;&lt;/</span><span style="color: #800000;">script</span><span style="color: #0000ff;">&gt;</span> 
   <span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">body</span><span style="color: #0000ff;">&gt;</span>
 <span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">html</span><span style="color: #0000ff;">&gt;</span></pre>
-<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="//common.cnblogs.com/images/copycode.gif" alt="复制代码"></a></span></div></div>
-<p>&nbsp;</p>
+
 <p>如果你有多个 webpack 入口点，它们都会被包含在生成的 script 元素中。</p>
 <p>如果有任何的 CSS 资源包含在 webpack 输出中（例如，使用 ExtractTextPlugin 提炼出的 css ），这些将会使用 link 包含在 HTML 页面的 head 元素中。</p>
 <h1>Configuration</h1>
@@ -57,7 +55,7 @@
 <li>excludeChunks: 允许跳过某些块，(比如，跳过单元测试的块)&nbsp;</li>
 </ul>
 <p>下面的示例演示了如何使用这些配置。</p>
-<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="//common.cnblogs.com/images/copycode.gif" alt="复制代码"></a></span></div>
+
 <pre><span style="color: #000000;">{
   entry: </span>'index.js'<span style="color: #000000;">,
   output: {
@@ -72,12 +70,12 @@
     })
   ]
 }</span></pre>
-<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="//common.cnblogs.com/images/copycode.gif" alt="复制代码"></a></span></div></div>
+
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 <h1>生成多个 HTML 文件</h1>
 <p>通过在配置文件中添加多次这个插件，来生成多个 HTML 文件。</p>
-<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="//common.cnblogs.com/images/copycode.gif" alt="复制代码"></a></span></div>
+
 <pre><span style="color: #000000;">{
   entry: </span>'index.js'<span style="color: #000000;">,
   output: {
@@ -92,12 +90,11 @@
     })
   ]
 }</span></pre>
-<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="//common.cnblogs.com/images/copycode.gif" alt="复制代码"></a></span></div></div>
-<p>&nbsp;</p>
+
 <p>&nbsp;</p>
 <h1>编写自定义模板</h1>
 <p>如果默认生成的 HTML 文件不适合你的需要看，可以创建自己定义的模板。方便的方式是通过 inject 选项，然后传递给定制的 HTML 文件。html-webpack-plugin 将会自动注入所有需要的 CSS, js, manifest 和 favicon 文件到标记中。</p>
-<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="//common.cnblogs.com/images/copycode.gif" alt="复制代码"></a></span></div>
+
 <pre><span style="color: #000000;">plugins: [
   </span><span style="color: #0000ff;">new</span><span style="color: #000000;"> HtmlWebpackPlugin({
     title: </span>'Custom template'<span style="color: #000000;">,
@@ -105,10 +102,9 @@
     inject: 'body' <span style="color: #008000;">//</span><span style="color: #008000;"> Inject all scripts into the body </span>
 <span style="color: #000000;">  })
 ]</span></pre>
-<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="//common.cnblogs.com/images/copycode.gif" alt="复制代码"></a></span></div></div>
-<p>&nbsp;</p>
+
 <p>my-index.html 文件</p>
-<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="//common.cnblogs.com/images/copycode.gif" alt="复制代码"></a></span></div>
+
 <pre><span style="color: #0000ff;">&lt;!</span><span style="color: #ff00ff;">DOCTYPE html</span><span style="color: #0000ff;">&gt;</span>
 <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">html</span><span style="color: #0000ff;">&gt;</span>
   <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">head</span><span style="color: #0000ff;">&gt;</span>
@@ -118,10 +114,10 @@
   <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">body</span><span style="color: #0000ff;">&gt;</span>
   <span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">body</span><span style="color: #0000ff;">&gt;</span>
 <span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">html</span><span style="color: #0000ff;">&gt;</span></pre>
-<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="//common.cnblogs.com/images/copycode.gif" alt="复制代码"></a></span></div></div>
+
 <p>&nbsp;</p>
 <p>如果你有模板加载器，可以使用它来解析这个模板。</p>
-<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="//common.cnblogs.com/images/copycode.gif" alt="复制代码"></a></span></div>
+
 <pre><span style="color: #000000;">module: {
   loaders: [
     { test: </span>/\.hbs$/, loader: "handlebars"<span style="color: #000000;"> }
@@ -134,7 +130,7 @@ plugins: [
     inject: </span>'body'<span style="color: #000000;">
   })
 ]</span></pre>
-<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="//common.cnblogs.com/images/copycode.gif" alt="复制代码"></a></span></div></div>
+
 <p>&nbsp;</p>
 <p>另外，如果你的模式是一个字符串，可以使用 templateContent 传递它。</p>
 <div class="cnblogs_code">
@@ -148,7 +144,7 @@ plugins: [
 <p>&nbsp;</p>
 <p>如果 inject 特性不适合你的需要，你希望完全控制资源放置。 可以直接使用 lodash 语法，使用 &nbsp;<a href="https://github.com/ampedandwired/html-webpack-plugin/blob/master/default_index.ejs">default template</a>&nbsp;作为起点创建自己的模板。</p>
 <p>templateContent 选项也可以是一个函数，以便使用其它语言，比如 jade：</p>
-<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="//common.cnblogs.com/images/copycode.gif" alt="复制代码"></a></span></div>
+
 <pre><span style="color: #000000;">plugins: [
   </span><span style="color: #0000ff;">new</span><span style="color: #000000;"> HtmlWebpackPlugin({
     templateContent: </span><span style="color: #0000ff;">function</span><span style="color: #000000;">(templateParams, compilation) {
@@ -157,10 +153,10 @@ plugins: [
     }
   })
 ]</span></pre>
-<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="//common.cnblogs.com/images/copycode.gif" alt="复制代码"></a></span></div></div>
+
 <p>&nbsp;</p>
 <p>或者异步版本</p>
-<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="//common.cnblogs.com/images/copycode.gif" alt="复制代码"></a></span></div>
+
 <pre><span style="color: #000000;">plugins: [
   </span><span style="color: #0000ff;">new</span><span style="color: #000000;"> HtmlWebpackPlugin({
     templateContent: </span><span style="color: #0000ff;">function</span><span style="color: #000000;">(templateParams, compilation, callback) {
@@ -169,16 +165,16 @@ plugins: [
     }
   })
 ]</span></pre>
-<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="//common.cnblogs.com/images/copycode.gif" alt="复制代码"></a></span></div></div>
+
 <p>&nbsp;</p>
 <p>注意，如果同时使用 template 和 templateContent ，插件会抛出错误。</p>
 <p>变量 o 在模板中是在渲染时传递进来的数据，这个变量有如下的属性：</p>
 <ul>
 <li>htmlWebpackPlugin: 这个插件的相关数据
-<ul>
-<li>　　htmlWebpackPlugin.files: 资源的块名，来自 webpack 的 stats 对象，包含来自 entry 的从 entry point name 到 bundle 文件名映射。</li>
+
+<li>htmlWebpackPlugin.files: 资源的块名，来自 webpack 的 stats 对象，包含来自 entry 的从 entry point name 到 bundle 文件名映射。</li>
 <li>
-<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="//common.cnblogs.com/images/copycode.gif" alt="复制代码"></a></span></div>
+
 <pre>"htmlWebpackPlugin"<span style="color: #000000;">: {
   </span>"files"<span style="color: #000000;">: {
     </span>"css": [ "main.css"<span style="color: #000000;"> ],
@@ -195,12 +191,10 @@ plugins: [
     }
   }
 }</span></pre>
-<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="//common.cnblogs.com/images/copycode.gif" alt="复制代码"></a></span></div></div>
+
 <p>&nbsp;如果在 webpack 配置文件中，你配置了 publicPath，将会反射正确的资源</p>
 </li>
 <li>htmlWebpackPlugin.options: 传递给插件的配置。</li>
-</ul>
-</li>
 <li>webpack: webpack 的 stats 对象。</li>
 <li>webpackConfig: webpack 配置信息。</li>
 </ul>
