@@ -78,6 +78,18 @@
     git merge  【分支合并】
     git conflict 【解决冲突】
     git tag 【创建标签】
+
+
+## 特性分支 ##
+从develop分支创建，用于特性开发，完成后要合并回develop分支。
+ 
+**操作过程：** 
+
+    git checkout -b newfeature develop //从develop分支创建newfeature特性分支 
+    git checkout develop //开发完成后，需要合并回develop分支，先切换到develop分支 
+    git merge --no-ff newfeature //合并回develop分支，必须加--no-ff参数 
+    git branch -d newfeature  //删除特性分支 
+    git push origin develop //把合并后的develop分支推送到远程仓库 
     
 
 ## 帮助文档 ##
