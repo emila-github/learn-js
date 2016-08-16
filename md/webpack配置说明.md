@@ -15,6 +15,12 @@
 	  },
 	  resolve: {
 	    extensions: ['', '.js', '.jsx']
+        fallback: [path.join(__dirname, '../node_modules')],
+        alias: {
+            'src': path.resolve(__dirname, '../src'),
+            'assets': path.resolve(__dirname, '../src/assets'),
+            'components': path.resolve(__dirname, '../src/components')
+        }
 	  },
 	  plugins: []
 	};
@@ -50,6 +56,8 @@ path: 打包文件存放的绝对路径。
 publicPath: 网站运行时的访问路径。
 
 relolve.extensions: 自动扩展文件的后缀名，比如我们在require模块的时候，可以不用写后缀名的。
+
+relolve.fallback 当 webpack 在 root（默认当前文件夹，配置时要绝对路径） 和 modulesDirectories（默认当前文件夹，相对路径）配置下面找不到相关modules，去哪个文件夹下找 modules
 
 relolve.alias: 模块别名定义，方便后续直接引用别名，无须多写长长的地址
 
