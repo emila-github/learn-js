@@ -85,24 +85,56 @@
 
 	//返回操作系统中目录分隔符，如window是';', Unix中是':'
 
-## path.parse(path) ##
+## path.parse(path) 把路径转换为对象## 
 
+	linux
 	path.parse('/home/user/dir/file.txt')
 	// returns
-	// {// root : "/",
-	// dir : "/home/user/dir",
-	// base : "file.txt",
-	// ext : ".txt",
-	// name : "file"
-	// }
+	{
+	    root : "/",
+	    dir : "/home/user/dir",
+	    base : "file.txt",
+	    ext : ".txt",
+	    name : "file"
+	}
+	windows
+	path.parse('C:\\path\\dir\\index.html')
+	// returns
+	{
+	    root : "C:\\",
+	    dir : "C:\\path\\dir",
+	    base : "index.html",
+	    ext : ".html",
+	    name : "index"
+	}
 
 
-## path.format(pathObject) ##
+## path.format(pathObject) 合并文件名 ##
 与parse相逆
 
-## path.isAbsolute(path) ##
-判断是否绝对路径
+	path.format({
+	    root : "/",
+	    dir : "/home/user/dir",
+	    base : "file.txt",
+	    ext : ".txt",
+	    name : "file"
+	})
+	// returns
+	'/home/user/dir/file.txt'
 
+## path.isAbsolute(path) 判断是否是绝对路径，如果长度为0，则返回false##
+判断是否绝对路径
+	linux
+	path.isAbsolute('/foo/bar') // true
+	path.isAbsolute('/baz/..')  // true
+	path.isAbsolute('qux/')     // false
+	path.isAbsolute('.')        // false
+	
+	windows
+	path.isAbsolute('//server')  // true
+	path.isAbsolute('C:/foo/..') // true
+	path.isAbsolute('bar\\baz')  // false
+	path.isAbsolute('.')         // false
 
 ## path.posix ##
 提供上述 path路径访问，不过总是以 posix 兼容的方式交互。
@@ -112,4 +144,5 @@
 
 ## 参考 ##
 - [node.js之path模块](http://www.jianshu.com/p/fe41ee02efc8)
+- [nodejs-path模块](http://www.jianshu.com/p/56bc803ecce2)
 
