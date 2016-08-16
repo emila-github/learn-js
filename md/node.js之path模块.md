@@ -7,7 +7,7 @@
     //引用该模块
     var path = require("path");
 
-## 1、路径解析，得到规范化的路径格式 ##
+## 1、path.normalize(p) 路径解析，得到规范化的路径格式 ##
 
 	//对window系统，目录分隔为'\', 对于UNIX系统，分隔符为'/'，针对'..'返回上一级；/与\\都被统一转换
 	//path.normalize(p);
@@ -15,7 +15,7 @@
 	var myPath = path.normalize(__dirname + '/test/a//b//../c/utilyou.mp3');
 	console.log(myPath); //windows: E:\workspace\NodeJS\app\fs\test\a\c\utilyou.mp3
 
-## 2、路径结合、合并，路径最后不会带目录分隔符 ##
+## 2、path.join([path1],[path2]..[pathn])路径结合、合并，路径最后不会带目录分隔符 ##
 
 	//path.join([path1],[path2]..[pathn]);
 	/**
@@ -29,7 +29,7 @@
 	var myPath = path.join(path1, path2, path3);
 	console.log(myPath); //path1\path2\path3
 
-## 3、获取绝对路径 ##
+## 3、path.resolve(path1, [path2]..[pathn]) 获取绝对路径 ##
 
 	//path.resolve(path1, [path2]..[pathn]);
 	
@@ -44,7 +44,7 @@
 	console.log(myPath);//E:\workspace\NodeJS\path1\path2\a\b\c
 
 
-## 4、获取相对路径 ##
+## 4、path.relative(from, to) 获取相对路径 ##
 
 	//path.relative(from, to);
 	//获取两路径之间的相对关系
@@ -62,7 +62,7 @@
 
 ## 5、path.dirname(p) ##
 
-// 获取路径中目录名
+	// 获取路径中目录名
 
 	var myPath = path.dirname(__dirname + '/test/util you.mp3');
 	console.log(myPath);
@@ -84,6 +84,30 @@
 ## 9、path.delimiter属性 ##
 
 	//返回操作系统中目录分隔符，如window是';', Unix中是':'
+
+## path.parse(path) ##
+
+	path.parse('/home/user/dir/file.txt')
+	// returns
+	// {// root : "/",
+	// dir : "/home/user/dir",
+	// base : "file.txt",
+	// ext : ".txt",
+	// name : "file"
+	// }
+
+
+## path.format(pathObject) ##
+与parse相逆
+
+## path.isAbsolute(path) ##
+判断是否绝对路径
+
+
+## path.posix ##
+提供上述 path路径访问，不过总是以 posix 兼容的方式交互。
+## path.win32 ##
+提供上述 path路径访问，不过总是以 win32 兼容的方式交互。
 
 
 ## 参考 ##
