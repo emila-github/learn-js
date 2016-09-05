@@ -65,6 +65,8 @@
     git diff，比较当前工作区和暂存区有何不同 
     git status，查看当前状态，发现有文件未提交 
     git log，查看提交日志
+	git rebase i HEAD~1 //修改最近的第一条日志记录
+    git commit --amend //修改最近的一条日志记录
     gitinit/git clone 【初始化库】 
     git status 【查看状态】 
     git add【添加文件】
@@ -73,6 +75,7 @@
     git rm【移除文件】
     git mv【移动文件】
     git log 【查看提交历史】
+	git log --pretty=oneline //  查看当行日志 
     git reset 【撤销操作】
     git branch 【创建分支】
     git merge  【分支合并】
